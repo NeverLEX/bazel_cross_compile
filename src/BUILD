@@ -38,7 +38,7 @@ cc_test(
         "//testdata:mytestdata",
     ],
     args = [
-        "timeout=120"
+        "--data_path=./testdata/mytestdata/"
     ],
     timeout="short",
 )

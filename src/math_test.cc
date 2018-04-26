@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string.h>
 #include "math.h"
 #include "gtest/gtest.h"
 
@@ -8,11 +9,18 @@
  */
 class MathEnvironment : public testing::Environment {
 public:
-    MathEnvironment() {}
+....MathEnvironment(int argc, char **argv) {
+........for (int i=1; i<argc; i++) {
+............if (0==strncmp(argv[i], "--data_path=", 12)){
+................test_data_path = argv[i] + 12;
+............}
+........}
+........if (test_data_path=="") test_data_path = "./testdata/mytestdata/";
+....}
 
 protected:
     virtual void SetUp() {
-        test_data_path = "./testdata/mytestdata/";
+........//test_data_path = "./testdata/mytestdata/";
     }
 
     virtual void TearDown() {
@@ -199,10 +207,9 @@ INSTANTIATE_TEST_CASE_P(HandleMaxTest,
 }  // namespace mathsample
 
 GTEST_API_ int main(int argc, char **argv) {
-    env = new MathEnvironment;
+    env = new MathEnvironment(argc, argv);
     testing::AddGlobalTestEnvironment(env);
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
-
 
