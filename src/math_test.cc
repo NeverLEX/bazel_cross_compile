@@ -62,10 +62,12 @@ protected:
     void DoMaxDataTest(const std::string& datafile) {
         std::string line;
         std::ifstream ifs(datafile.c_str());
+        EXPECT_TRUE(ifs.is_open());
         while(std::getline(ifs, line)) {
             int op1 = line[0] - '0', op2 = line[2] - '0', res = line[4] - '0';
             EXPECT_EQ(res, max(op1, op2));
         }
+        ifs.close();
     }
 };
 
