@@ -8,6 +8,7 @@ cc_library(
     srcs = [
         "math.cc",
     ],
+    linkstatic = True,
 )
 
 cc_binary(
@@ -35,6 +36,9 @@ cc_test(
     ],
     data = [
         "//testdata:mytestdata",
+    ],
+    args = [
+        "timeout=120"
     ],
     timeout="short",
 )
