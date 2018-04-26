@@ -9,18 +9,18 @@
  */
 class MathEnvironment : public testing::Environment {
 public:
-....MathEnvironment(int argc, char **argv) {
-........for (int i=1; i<argc; i++) {
-............if (0==strncmp(argv[i], "--data_path=", 12)){
-................test_data_path = argv[i] + 12;
-............}
-........}
-........if (test_data_path=="") test_data_path = "./testdata/mytestdata/";
-....}
+    MathEnvironment(int argc, char **argv) {
+        for (int i=1; i<argc; i++) {
+            if (0==strncmp(argv[i], "--data_path=", 12)){
+                test_data_path = argv[i] + 12;
+            }
+        }
+        if (test_data_path=="") test_data_path = "./testdata/mytestdata/";
+    }
 
 protected:
     virtual void SetUp() {
-........//test_data_path = "./testdata/mytestdata/";
+        //test_data_path = "./testdata/mytestdata/";
     }
 
     virtual void TearDown() {
