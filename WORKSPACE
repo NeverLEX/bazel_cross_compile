@@ -16,3 +16,8 @@ git_repo(
     name = "com_google_googletest",
     remote = "https://github.com/google/googletest.git",
 )
+
+android_ndk_repository(
+    name = "androidndk",  # Required. Name *must* be "androidndk".
+    # path = "/path/to/ndk", # Optional. Can be omitted if `ANDROID_NDK_HOME` environment variable is set.
+)
