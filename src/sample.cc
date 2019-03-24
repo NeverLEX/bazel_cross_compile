@@ -20,6 +20,7 @@ void PrintFile(const char *filename) {
 
 int main(int argc, char*argv[]) {
     std::cout << "hello world." << std::endl;
+    std::cout << math_lib::max(1,2) << std::endl;
     //google::InitGoogleLogging(argv[0]);
     //gflags::ParseCommandLineFlags(&argc, &argv, true);
     //PrintFile("./testdata/mytestdata/hello.txt");
