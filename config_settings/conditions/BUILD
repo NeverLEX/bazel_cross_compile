@@ -20,3 +20,11 @@ config_setting(
         "cpu": "x86",
     },
 )
+
+# e. g.
+#copts = select({
+#    "//config_settings/conditions:android_armv7": ["-fPIC"],
+#    "//config_settings/conditions:android_arm64": ["-fPIC"],
+#    "//config_settings/conditions:android_x86": ["-fPIC"],
+#    "//conditions:default": [],
+#})
