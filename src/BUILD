@@ -11,25 +11,6 @@ cc_library(
     linkstatic = True,
 )
 
-#objc_library(
-#    name = "math_iphone",
-#    srcs = [
-#        "math.cc",
-#    ],
-#    hdrs = [
-#        "math.h",
-#    ],
-#)
-
-apple_static_library(
-    name = "math_iphone_lipo",
-    minimum_os_version = "6.0",
-    platform_type = "ios",
-    deps = [
-        ":math",
-    ],
-)
-
 cc_binary(
     name = "sample",
     srcs = [

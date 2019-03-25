@@ -3,25 +3,21 @@
 ## linux
     bazel test //... --config=linux
 
-## darwin & ios
-  - take a look at .bazelrc
-  - set platform type of ios (--ios-multi-cpus)
-  - build
-    ```
+## darwin
     bazel test //... --config=darwin
-    ```
-  
-    Note: If you want to build a library for iOS, you need to use `apple_static_library` in the BUILD file.
+
+## ios
+  - see `src/math_ios.bazel` for details
     
 ## android
   - download Android NDK
   - set `ANDROID_NDK_HOME` environment variable
   - build
     ```
-    bazel test //... --config=android_armeabi-v7a
-    bazel test //... --config=android_arm64-v8a
-    bazel test //... --config=android_simulator_x86
+    bazel build //... --config=android_armeabi-v7a
+    bazel build //... --config=android_arm64-v8a
+    bazel build //... --config=android_simulator_x86
     ```
-    
-## TODO
-    Disable Android test builds with configuration settings
+
+## configs
+    see `.bazelrc` for details
