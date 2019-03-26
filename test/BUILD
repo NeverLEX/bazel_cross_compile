@@ -6,6 +6,7 @@ genrule(
     outs = ["test.out"],
     cmd = select({
         "//config_settings/conditions:linux": "echo linux > $@",
+        "//config_settings/conditions:linux_sandybridge": "echo linux_sandybridge > $@",
         "//config_settings/conditions:darwin": "echo darwin > $@",
         "//config_settings/conditions:ios": "echo ios > $@",
         "//config_settings/conditions:android": "echo android > $@",
@@ -19,6 +20,7 @@ genrule(
     outs = ["test_detail.out"],
     cmd = select({
         "//config_settings/conditions:linux": "echo linux > $@",
+        "//config_settings/conditions:linux_sandybridge": "echo linux_sandybridge > $@",
         "//config_settings/conditions:darwin": "echo darwin > $@",
         "//config_settings/conditions:ios": "echo ios > $@",
         "//config_settings/conditions:android_armv7": "echo android_armv7 > $@",

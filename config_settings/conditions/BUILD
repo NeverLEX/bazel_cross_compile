@@ -8,6 +8,16 @@ config_setting(
 )
 
 config_setting(
+    name = "linux_sandybridge",
+    constraint_values = [
+        "@bazel_tools//platforms:linux",
+    ],
+    define_values = {
+        "target": "sandybridge",
+    }
+)
+
+config_setting(
     name = "darwin",
     constraint_values = [
         "@bazel_tools//platforms:osx",

@@ -1,5 +1,7 @@
 # common config
 common:common_config --cxxopt=-std=c++11
+common:common_config --cxxopt=-stdlib=libc++
+common:common_config --cxxopt=-fPIC
 common:common_config --copt=-fPIC
 common:common_config --copt=-frtti
 common:common_config --copt=-fno-exceptions
