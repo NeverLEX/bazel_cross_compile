@@ -12,8 +12,8 @@ config_setting(
     constraint_values = [
         "@bazel_tools//platforms:linux",
     ],
-    define_values = {
-        "target": "sandybridge",
+    values = {
+        "define": "target=sandybridge",
     }
 )
 

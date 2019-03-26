@@ -1,6 +1,5 @@
 # common config
 common:common_config --cxxopt=-std=c++11
-common:common_config --cxxopt=-stdlib=libc++
 common:common_config --cxxopt=-fPIC
 common:common_config --copt=-fPIC
 common:common_config --copt=-frtti
@@ -12,7 +11,8 @@ common:common_config --copt=-fdata-sections
 common:common_config --copt=-funwind-tables
 
 # android
-common:android --config=common_config 
+common:android --config=common_config
+common:android --cxxopt=-stdlib=libc++
 common:android --linkopt=-ldl
 common:android --linkopt=-lm
 common:android --linkopt=-llog

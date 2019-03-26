@@ -10,10 +10,10 @@ export ANDROID_NDK_HOME=$HOME/android-ndk-r16b
 
 # Make sure everything checks out, including the test.
 HOST_PLATFORM=`uname | tr '[A-Z]' '[a-z]'`
-bazel test -c opt --config=$HOST_PLATFORM -- //...
+bazel test -c opt --config=$HOST_PLATFORM -- //src/...
 # Building libraries for ios
 if [ "$HOST_PLATFORM" == "linux" ]; then
-	bazel test -c opt --config=$HOST_PLATFORM -- //... --define target=sandybridge
+	bazel test -c opt --config=$HOST_PLATFORM --define target=sandybridge -- //src/...
 fi
 
 # Building libraries for lib.
@@ -29,5 +29,7 @@ fi
 echo "Successfully built the following libraries:"
 echo ""
 ls bazel-out/*-opt/bin/release/*libmath_capi*.so
-ls bazel-out/*-opt/bin/release/*libmath_capi*_lipo*.a
+if [ "$HOST_PLATFORM" == "darwin" ]; then
+  ls bazel-out/*-opt/bin/release/*libmath_capi*_lipo*.a
+fi
 echo ""
