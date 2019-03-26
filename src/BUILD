@@ -2,11 +2,11 @@ package(default_visibility = ["//visibility:public"])
 
 cc_library(
     name = "math",
-    hdrs = [
-        "math.h",
-    ],
     srcs = [
         "math.cc",
+    ],
+    hdrs = [
+        "math.h",
     ],
     linkstatic = True,
 )
@@ -17,28 +17,24 @@ cc_binary(
         "sample.cc",
     ],
     deps = [
-        #"//src:math",
         ":math",
-        "@com_github_gflags_gflags//:gflags",
-        "@com_github_google_glog//:glog",
     ],
 )
 
 cc_test(
     name = "math_test",
+    timeout = "short",
     srcs = [
         "math_test.cc",
     ],
-    deps = [
-        #"//src:math",
-        ":math",
-        "@com_google_googletest//:gtest",
+    args = [
+        "--data_path=./testdata/mytestdata/",
     ],
     data = [
         "//testdata:mytestdata",
     ],
-    args = [
-        "--data_path=./testdata/mytestdata/"
+    deps = [
+        ":math",
+        "@com_google_googletest//:gtest",
     ],
-    timeout="short",
 )

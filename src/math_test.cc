@@ -60,11 +60,11 @@ protected:
 protected:
 
     int DoMaxTest(int a, int b) {
-        return max(a, b);
+        return math_lib::max(a, b);
     }
 
     int DoMinTest(int a, int b) {
-        return min(a, b);
+        return math_lib::min(a, b);
     }
 
     void DoMaxDataTest(const std::string& datafile) {
@@ -73,7 +73,7 @@ protected:
         EXPECT_TRUE(ifs.is_open());
         while(std::getline(ifs, line)) {
             int op1 = line[0] - '0', op2 = line[2] - '0', res = line[4] - '0';
-            EXPECT_EQ(res, max(op1, op2));
+            EXPECT_EQ(res, math_lib::max(op1, op2));
         }
         ifs.close();
     }
@@ -103,11 +103,11 @@ protected:
 protected:
 
     int DoMaxTest(int a, int b) {
-        return max(a, b);
+        return math_lib::max(a, b);
     }
 
     int DoMinTest(int a, int b) {
-        return min(a, b);
+        return math_lib::min(a, b);
     }
 };
 
@@ -135,11 +135,11 @@ protected:
 protected:
 
     int DoMaxTest(int a, int b) {
-        return max(a, b);
+        return math_lib::max(a, b);
     }
 
     int DoMinTest(int a, int b) {
-        return min(a, b);
+        return math_lib::min(a, b);
     }
 };
 
@@ -161,7 +161,7 @@ TEST_P(MathValueTest, HandleMinTest)
 {
     int op = GetParam();
     int exp = op < 3 ? op : 3;
-    EXPECT_EQ(exp, min(3, op));
+    EXPECT_EQ(exp, math_lib::min(3, op));
 }
 
 INSTANTIATE_TEST_CASE_P(HandleMinTest,
@@ -172,7 +172,7 @@ TEST_P(MathValueTest, HandleMaxTest)
 {
     int op = GetParam();
     int exp = op > 3 ? op : 3;
-    EXPECT_EQ(exp, max(3, op));
+    EXPECT_EQ(exp, math_lib::max(3, op));
 }
 
 INSTANTIATE_TEST_CASE_P(HandleMaxTest,
@@ -184,7 +184,7 @@ TEST_P(MathCombineTest, HandleMinTest)
     int op1 = ::std::get<0>(GetParam());
     int op2 = ::std::get<1>(GetParam());
     int exp = op1 < op2 ? op1 : op2;
-    EXPECT_EQ(exp, min(op1, op2));
+    EXPECT_EQ(exp, math_lib::min(op1, op2));
 }
 
 INSTANTIATE_TEST_CASE_P(HandleMinTest,
@@ -196,7 +196,7 @@ TEST_P(MathCombineTest, HandleMaxTest)
     int op1 = ::std::get<0>(GetParam());
     int op2 = ::std::get<1>(GetParam());
     int exp = op1 > op2 ? op1 : op2;
-    EXPECT_EQ(exp, max(op1, op2));
+    EXPECT_EQ(exp, math_lib::max(op1, op2));
 }
 
 INSTANTIATE_TEST_CASE_P(HandleMaxTest,
