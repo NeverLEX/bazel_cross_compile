@@ -26,10 +26,4 @@ if [ "$HOST_PLATFORM" == "darwin" ]; then
 	bazel build -c opt --config=ios -- //release:libmath_capi_lipo
 fi
 
-echo "Successfully built the following libraries:"
-echo ""
-ls bazel-out/*-opt/bin/release/*libmath_capi*.so
-if [ "$HOST_PLATFORM" == "darwin" ]; then
-  ls bazel-out/*-opt/bin/release/*libmath_capi*_lipo*.a
-fi
-echo ""
+echo "Done."

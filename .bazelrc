@@ -1,23 +1,33 @@
 # common config
 common:common_config --cxxopt=-std=c++11
 common:common_config --cxxopt=-fPIC
-common:common_config --copt=-fPIC
-common:common_config --copt=-frtti
-common:common_config --copt=-fno-exceptions
-common:common_config --copt=-fvisibility=hidden
-common:common_config --copt=-fvisibility-inlines-hidden
+common:common_config --cxxopt=-frtti
+common:common_config --cxxopt=-ffunction-sections
+common:common_config --cxxopt=-fdata-sections
+common:common_config --cxxopt=-funwind-tables
 common:common_config --copt=-ffunction-sections
 common:common_config --copt=-fdata-sections
 common:common_config --copt=-funwind-tables
+common:common_config --copt=-fPIC
+common:common_config --linkopt=-fPIC
+common:common_config --linkopt=-frtti
+common:android --cxxopt=-fno-exceptions
+common:android --copt=-fno-exceptions
 
 # android
+common:android --cxxopt=-fvisibility=hidden
+common:android --cxxopt=-fvisibility-inlines-hidden
+common:android --copt=-fvisibility=hidden
 common:android --config=common_config
-common:android --cxxopt=-stdlib=libc++
+common:android --cxxopt=-stdlib=libstdc++
 common:android --linkopt=-ldl
 common:android --linkopt=-lm
 common:android --linkopt=-llog
 common:android --linkopt=-pie
 common:android --linkopt=-fPIE
+common:android --linkopt=-latomic
+common:android --linkopt=-pedantic
+common:android --linkopt=-Wl,--gc-sections
 common:android --copt=-fPIE
 common:android --crosstool_top=@androidndk//:default_crosstool
 common:android --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
@@ -26,16 +36,23 @@ common:android --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
 common:android_armeabi-v7a --config=android
 common:android_armeabi-v7a --cpu=armeabi-v7a
 common:android_armeabi-v7a --fat_apk_cpu=armeabi-v7a
+common:android_armeabi-v7a --copt=-Os
+common:android_armeabi-v7a --copt=-DNDEBUG
+common:android_armeabi-v7a --copt=-mthumb
 
 # android_arm64
 common:android_arm64-v8a --config=android
 common:android_arm64-v8a --cpu=arm64-v8a
 common:android_arm64-v8a --fat_apk_cpu=arm64-v8a
+common:android_arm64-v8a --copt=-O2
+common:android_arm64-v8a --copt=-DNDEBUG
 
 # android_simulator_x86
 common:android_simulator_x86 --config=android
 common:android_simulator_x86 --cpu=x86
 common:android_simulator_x86 --fat_apk_cpu=x86
+common:android_simulator_x86 --copt=-O2
+common:android_simulator_x86 --copt=-DNDEBUG
 
 # linux
 common:linux --config=common_config
@@ -47,3 +64,6 @@ common:darwin --config=common_config
 common:ios --config=common_config
 common:ios --ios_multi_cpus=armv7,arm64,x86_64,i386
 common:ios --apple_bitcode=embedded
+common:ios --linkopt=-fpermissive
+common:ios --copt=-stdlib=libc++
+common:ios --cxxopt=-stdlib=libc++
